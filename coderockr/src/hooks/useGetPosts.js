@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react"
 import api from "../services/api"
 
+const pageNumber = 1
+const limit = 6
 
 const useGetPosts = () => {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
-    const [data, setData] = useState()
+    const [data, setData] = useState([])
+    const [page, setPage] = useState(pageNumber)
+
 
     useEffect(() => {
-        api.get("/articles").then((response) => {
+        api.get(`/articles?_page=${pageNumber}&_limit=${limit}`).then((response) => {
             setError(null)
             setLoading(false)
             setData(response.data)
@@ -22,9 +26,19 @@ const useGetPosts = () => {
             setData(null)
         })
 
-    }, [])
+    }, [pageNumber])
 
-    return { loading, error, data }
+    const scrollToEnd = () => {
+        setPage(pageNumber + 1)
+    }
+
+    window.onscroll = function () {
+        if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
+
+        }
+    }
+
+    return { loading, error, data, page }
 }
 
 export default useGetPosts
