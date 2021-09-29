@@ -27,7 +27,7 @@ const Container = styled.span`
 `
 
 function Home() {
-    const { data } = useGetPosts()
+    const { data, scrollToEnd } = useGetPosts()
 
     function regex(body) {
         var regex = /(<([^>]+)>)/ig
@@ -36,7 +36,7 @@ function Home() {
 
     return (
 
-        <>
+        <div onScroll={scrollToEnd}>
             {data.map((el, index) => {
                 if ((index + 1) % 3 === 0) {
                     return (
@@ -66,7 +66,7 @@ function Home() {
             })}
 
 
-        </>
+        </div>
     )
 }
 

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { ContactModal } from "../Modal";
+import { GiHamburgerMenu } from "react-icons/gi"
 
 const Headers = styled.header`
   display: flex;
@@ -46,6 +48,7 @@ const Nav = styled.nav`
     color: var(--white);
     text-decoration: none;
     font-size: 26px;
+    cursor: pointer;
     &::after {
       content: "";
       display: block;
@@ -59,62 +62,26 @@ const Nav = styled.nav`
       background: var(--purple);
     }
   }
-`;
-
-const Button = styled.button`
-  background-color: #4a80aa;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  color: var(--white);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:focus {
-    transform: scale(0.9);
-  }
-  @media only Screen and (max-width: 40em) {
-    font-size: 1.2rem;
-    &:hover {
-      transform: none;
-    }
-    &:focus {
-      transform: none;
-    }
+  button {
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 26px;
+    cursor: pointer;
+    background: none;
+    border: none;
   }
 `;
 
-const HamburgerBtn = styled.button`
+const HamburgerBtn = styled(GiHamburgerMenu)`
   position: relative;
   background-color: transparent;
-  width: 2rem;
-  height: 2px;
+  width: 50px;
   cursor: pointer;
   display: none;
   @media only Screen and (max-width: 48em) {
     display: inline-block;
-  }
-  &::before,
-  &::after {
-    content: "";
-    background-color: var(--white);
-    width: 2rem;
-    height: 2px;
-    display: inline-block;
-    position: absolute;
-    left: 0;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  &::before {
-    top: ${(props) => (props.clicked ? "0" : "-0.5rem")};
-    transform: ${(props) => (props.clicked ? "rotate(135deg)" : "rotate(0)")};
-  }
-  &::after {
-    top: ${(props) => (props.clicked ? "0" : "0.5rem")};
-    transform: ${(props) => (props.clicked ? "rotate(-135deg)" : "rotate(0)")};
   }
 `;
 
@@ -140,12 +107,29 @@ const MobileMenu = styled.div`
     font-size: 1.5rem;
     margin: 1.5rem;
     cursor: pointer;
+    text-decoration: none;
+  }
+  button {
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 26px;
+    cursor: pointer;
+    background: none;
+    border: none;
   }
 `;
 
 const Header = () => {
-  const [click, setClick] = useState(false);
-  const handleClick = () => setClick(!click);
+  const [click, setClick] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+
+  const openModal = () => {
+    setShowModal(prev => !prev)
+  }
+
+  const handleClick = () => setClick(!click)
 
   return (
     <Headers>
@@ -156,7 +140,8 @@ const Header = () => {
       </Logo>
       <Nav>
         <a href="/">Posts</a>
-        <a href="#">Contact</a>
+        <button onClick={openModal}>Contact</button>
+        <ContactModal showModal={showModal} setShowModal={setShowModal} />
       </Nav>
       <HamburgerBtn onClick={() => handleClick()} clicked={click}>
         <span />
@@ -165,9 +150,9 @@ const Header = () => {
         <a href="/" onClick={() => handleClick()}>
           Posts
         </a>
-        <a href="#" onClick={() => handleClick()}>
+        <button onClick={openModal}>
           Contact
-        </a>
+        </button>
       </MobileMenu>
     </Headers>
   );

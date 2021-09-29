@@ -6,6 +6,10 @@ display: flex;
 width: 80%;
 height: 640px;
 background: #fff;
+
+@media (max-width: 1200px){
+  display: none;
+}
 `
 
 const CardContent = styled.div`
@@ -28,7 +32,7 @@ const Author = styled.p`
 `
 
 const Article = styled.div`
-  font-size: small;
+  font-size: 12px;
   color: #2D2D2D;
 `
 
