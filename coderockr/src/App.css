@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.main {
+body {
   background: rgb(241, 161, 10);
   background: linear-gradient(90deg, rgba(241, 161, 10, 1) 0%, rgba(52, 35, 3, 1) 100%);
 }

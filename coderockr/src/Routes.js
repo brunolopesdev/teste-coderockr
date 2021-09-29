@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-// import Post from './pages/Post'
+import Post from './pages/Post'
 import Home from './pages/Home'
 import Header from './components/header/index'
 
@@ -9,7 +9,7 @@ function Routes() {
             <Header />
             <Switch>
                 <Route path='/' exact component={Home} />
-                {/* <Route path='/post/:id' exact component={Post} /> */}
+                <Route path='/post/:id' exact component={Post} />
             </Switch>
         </Router>
     )

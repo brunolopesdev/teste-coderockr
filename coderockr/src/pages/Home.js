@@ -45,8 +45,9 @@ function Home() {
                             id={el.id}
                             author={el.author}
                             title={el.title}
-                            article={el.article}
+                            article={regex(el.article)}
                             imageUrl={el.imageUrl}
+                            date={el.date}
                         />
                     )
                 } else {
@@ -56,8 +57,9 @@ function Home() {
                                 id={el.id}
                                 author={el.author}
                                 title={el.title}
-                                article={el.article}
-                                imageUrl={el.imageUrl} />
+                                article={regex(el.article)}
+                                imageUrl={el.imageUrl}
+                                date={el.date} />
                         </Container>
                     )
                 }

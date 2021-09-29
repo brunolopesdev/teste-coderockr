@@ -41,7 +41,7 @@ const Nav = styled.nav`
     display: none;
   }
   a {
-    font-weight: 600;
+    font-weight: 400;
     line-height: 1.5;
     color: var(--white);
     text-decoration: none;
@@ -58,14 +58,6 @@ const Nav = styled.nav`
       width: 100%;
       background: var(--purple);
     }
-    /* &:not(:last-child) {
-      margin-right: 2rem;
-    } */
-    /* @media only Screen and (max-width: 48em) {
-      &:not(:last-child) {
-        margin-right: 1rem;
-      }
-    } */
   }
 `;
 
@@ -152,39 +144,33 @@ const MobileMenu = styled.div`
 `;
 
 const Header = () => {
-    const [click, setClick] = useState(false);
-    const handleClick = () => setClick(!click);
+  const [click, setClick] = useState(false);
+  const handleClick = () => setClick(!click);
 
-    return (
-        <Headers>
-            <Logo>
+  return (
+    <Headers>
+      <Logo>
 
-                <h3>Rockr Blog</h3>
+        <h3>Rockr Blog</h3>
 
-            </Logo>
-            <Nav>
-                <a href="#home">Posts</a>
-                <a href="#about">Contact</a>
-            </Nav>
-            <HamburgerBtn onClick={() => handleClick()} clicked={click}>
-                <span />
-            </HamburgerBtn>
-            <MobileMenu clicked={click}>
-                <a href="#home" onClick={() => handleClick()}>
-                    Inicio
-                </a>
-                <a href="#about" onClick={() => handleClick()}>
-                    Sobre
-                </a>
-                <a href="#services" onClick={() => handleClick()}>
-                    Services
-                </a>
-                <a href="#contact" onClick={() => handleClick()}>
-                    <Button>Contato</Button>
-                </a>
-            </MobileMenu>
-        </Headers>
-    );
+      </Logo>
+      <Nav>
+        <a href="/">Posts</a>
+        <a href="#">Contact</a>
+      </Nav>
+      <HamburgerBtn onClick={() => handleClick()} clicked={click}>
+        <span />
+      </HamburgerBtn>
+      <MobileMenu clicked={click}>
+        <a href="/" onClick={() => handleClick()}>
+          Posts
+        </a>
+        <a href="#" onClick={() => handleClick()}>
+          Contact
+        </a>
+      </MobileMenu>
+    </Headers>
+  );
 };
 
 export default Header;
