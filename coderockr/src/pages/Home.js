@@ -1,5 +1,5 @@
 import DoubleCard from "../components/Cards/Double"
-import { useGetPosts } from "../hooks/useGetPosts"
+import useGetPosts from "../hooks/useGetPosts"
 import styled from "styled-components"
 import SingleCard from "../components/Cards/Single"
 
@@ -29,6 +29,11 @@ const Container = styled.span`
 function Home() {
     const { data } = useGetPosts()
 
+    function regex(body) {
+        var regex = /(<([^>]+)>)/ig
+        return body.replace(regex, "");
+    }
+
     return (
 
         <>
@@ -47,7 +52,7 @@ function Home() {
                 } else {
                     return (
                         <Container key={index}>
-                            <SingleCardCard
+                            <SingleCard
                                 id={el.id}
                                 author={el.author}
                                 title={el.title}
