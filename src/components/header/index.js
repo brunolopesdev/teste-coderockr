@@ -10,7 +10,8 @@ const Headers = styled.header`
   padding: 0rem 5rem;
   background: #2D2D2D;
   color: #fff;
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 500;
   @media only Screen and (max-width: 64em) {
     padding: 0rem 3rem;
