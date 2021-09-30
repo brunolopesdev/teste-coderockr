@@ -29,9 +29,9 @@ const Container = styled.span`
 function Home() {
     const { data, scrollToEnd } = useGetPosts()
 
-    function regex(body) {
+    function regexArticle(text) {
         var regex = /(<([^>]+)>)/ig
-        return body.replace(regex, "");
+        return text.replace(regex, "");
     }
 
     return (
@@ -45,7 +45,7 @@ function Home() {
                             id={el.id}
                             author={el.author}
                             title={el.title}
-                            article={regex(el.article)}
+                            article={regexArticle(el.article)}
                             imageUrl={el.imageUrl}
                             date={el.date}
                         />
@@ -57,7 +57,7 @@ function Home() {
                                 id={el.id}
                                 author={el.author}
                                 title={el.title}
-                                article={regex(el.article)}
+                                article={regexArticle(el.article)}
                                 imageUrl={el.imageUrl}
                                 date={el.date} />
                         </Container>
